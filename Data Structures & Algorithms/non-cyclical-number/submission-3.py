@@ -1,0 +1,18 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        def get_next(num):
+            total = 0
+            while num > 0:
+                x = num % 10
+                total += x**2
+                num = num // 10
+            return total
+        seen = set()
+        while n != 1:
+            if n in seen:
+                return False
+            seen.add(n)
+            n = get_next(n)
+        return True
+                
+            
